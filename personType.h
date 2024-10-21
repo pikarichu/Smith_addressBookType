@@ -30,6 +30,7 @@ public:
 	personType( //constructor with parameters
 		string fName,
 		string lName
+
 	)
 	{
 		setFirstName(fName);

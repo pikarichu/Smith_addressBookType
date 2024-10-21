@@ -6,6 +6,15 @@
 class extPersonType : public personType
 {
 public:
+	
+	void setKey()
+	{
+		key = lastName + " " + firstName;
+	}
+	string getKey()
+	{
+		return key;
+	}
 	void setPhoneNumber(string pnum)
 	{
 		phoneNumber = pnum; //sets the phone number
@@ -68,6 +77,30 @@ public:
 		address.setZipcode(zip);
 		setPhoneNumber(phoneNumber);
 		setRelationship(relationship);
+		setKey();
+	}
+	bool operator==(const extPersonType& other) const 
+	{
+		//string otherKey = other.lastName + " " + other.firstName;
+		return (key == other.key);
+	}
+
+	bool operator!=(const extPersonType& other) const 
+	{
+
+		return !(key == other.key);
+	}
+
+	bool operator>=(const extPersonType& other) const {
+		if (key > other.key) {
+			return true;
+		}
+		else if (key == other.key) {
+			return key >= other.key;
+		}
+		else {
+			return false;
+		}
 	}
 
 private:
@@ -75,5 +108,8 @@ private:
 	dateType birthdate;
 	string phoneNumber;
 	string relationship;
+	string firstName;
+	string lastName;
+	string key;
 };
 

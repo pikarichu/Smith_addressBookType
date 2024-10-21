@@ -65,9 +65,10 @@ void getInput(addressBookType book)
 
 int main()
 {
-    addressBookType myAddressBook;
-    myAddressBook.initEntry("AddressBookData.txt");  //Initialize the address book
+    addressBookType mainAddressBook;
+    mainAddressBook.initEntry("AddressBookData.txt");  //Initialize the address book
     
-    getInput(myAddressBook); //Runs the client program
+
+    getInput(mainAddressBook); //Runs the client program
 
 }
