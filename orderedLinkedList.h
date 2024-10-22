@@ -74,7 +74,6 @@ bool orderedLinkedList<Type>::
 template <class Type>
 void orderedLinkedList<Type>::insert(const Type& newItem)
 {
-    cout << "Made it into 'insert'" << endl;
     nodeType<Type> *current; //pointer to traverse the list
     nodeType<Type> *trailCurrent = nullptr; //pointer just before current
     nodeType<Type> *newNode;  //pointer to create a node
@@ -84,19 +83,14 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
     newNode = new nodeType<Type>; //create the node
     newNode->info = newItem;  //store newItem in the node
     newNode->link = nullptr;  //set the link field of the node to nullptr
-    cout << "made it to Case 1" << endl;
     if (this->first == nullptr)  //Case 1
     {
-        cout << "made it into Case 1" << endl;
-
         this->first = newNode;
         this->last = newNode;
         this->count++;
     }
     else
     {
-        cout << "made it into the else" << endl;
-
         current = this->first;
         found = false;
 
@@ -126,7 +120,6 @@ void orderedLinkedList<Type>::insert(const Type& newItem)
             this->count++;
         }
     }//end else
-    cout << "Made it to the end of 'insert'" << endl;
 }//end insert
 
 template<class Type>

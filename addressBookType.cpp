@@ -14,7 +14,7 @@ string prompt = "Enter a number";
 
 void getInput(addressBookType book)
 {
-    string person;
+    string first, last;
     int month = 0;
     //Capture Keystroke as int a
     int a = 0;
@@ -40,9 +40,15 @@ void getInput(addressBookType book)
                 //case 2
                 break;
             case 2: //Print by last name
-                cout << "Enter the last name: ";
-                cin >> person;
-                book.findPerson(person);
+                cout << "Enter the Last: ";
+                cin >> last;
+                //getline(cin, last);
+
+                cout << "Enter the First Name: ";
+                cin >> first;
+
+                //getline(cin, first);
+                book.findPerson(last, first);
                 break;
             case 3: //Print by birth month
                 cout << "Enter the birth month: ";
@@ -51,8 +57,8 @@ void getInput(addressBookType book)
                 break;
             case 4: //Print by relationship
                 cout << "Enter the relationship: ";
-                cin >> person;
-                book.findRelations(person);
+                cin >> first;
+                book.findRelations(first);
                 break;
             case 5: //Quit
                 break;

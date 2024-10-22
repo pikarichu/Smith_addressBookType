@@ -19,8 +19,6 @@ public:
 
 	void initEntry(string addressList) //creates the address book
 	{
-		cout << "In initEntry(string addressList), in addressBookType.h, line 20"
-			<< endl;
 		int lineNumber = 0;
 		
 		string line;
@@ -45,7 +43,6 @@ public:
 
 		while (getline(addressBookFile, line))
 		{
-			cout << "In getline(addressList), addressBookType.h, line 44" << endl;
 			switch (lineNumber)
 			{
 			case 0: //gets the first name per entry
@@ -101,28 +98,31 @@ public:
 
 	void addEntry(extPersonType person) //adds an entry to the address bool
 	{
-		cout << person.getLastName() << endl;
 		this->insert(person);
-		cout << "In addEntry (extPersonType person), in adressBookType.h, line 101"
-			<< endl;
-
 	}
-	void findPerson(string lName) //finds an entry by last name
+	
+	void findPerson(string newlname, string newfname) //finds an entry by last name
 	{
+		string otherKey = newlname + " " + newfname;
 		bool found = false;
 		nodeType<extPersonType>* current; //pointer to traverse the list
 
 		current = this->first;  //start the search at the first node
-		//cout << current->info.getKey() << endl;
+		
 		while (current != nullptr && !found)
-			if (current->info.getLastName() == lName)
+		{
 
+			if (otherKey == current->info.getKey())
 			{
 				found = true;
 				current->info.print();
 			}
 			else
+			{
 				current = current->link;
+			}
+			//cout << current->info.getKey() << endl;
+		}
 
 	}
 	void findBirthdays(int bMonth) //finds an entry by birth month

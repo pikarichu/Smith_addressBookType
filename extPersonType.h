@@ -7,9 +7,12 @@ class extPersonType : public personType
 {
 public:
 	
+	string key;
+
+
 	void setKey()
 	{
-		key = lastName + " " + firstName;
+		key = getLastName() + " " + getFirstName();
 	}
 	string getKey()
 	{
@@ -108,8 +111,7 @@ private:
 	dateType birthdate;
 	string phoneNumber;
 	string relationship;
-	string firstName;
-	string lastName;
-	string key;
+	//string firstName;
+	//string lastName;
 };
 
