@@ -24,7 +24,7 @@ void getInput(addressBookType book)
     do {
         cout << endl
             << "1: Print all entries" << endl
-            << "2: Find person by last name" << endl
+            << "2: Find person by name" << endl
             << "3: Show entries by birth month" << endl
             << "4: Show entries by relationship" << endl
             << "5: Quit" << endl;
