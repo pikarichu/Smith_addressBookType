@@ -103,6 +103,7 @@ public:
 		}
 	}
 
+
 private:
 	addressType address;
 	dateType birthdate;

@@ -27,9 +27,11 @@ void getInput(addressBookType book)
             << "2: Find person by last name" << endl
             << "3: Show entries by birth month" << endl
             << "4: Show entries by relationship" << endl
-            << "5: Quit" << endl;
+            << "5: Enter a new record" << endl
+            << "6: Delete a record" << endl
+            << "7: Quit" << endl;
 
- 
+            extPersonType temp;
             cin >> a;
 
             switch (a)
@@ -54,12 +56,23 @@ void getInput(addressBookType book)
                 cin >> person;
                 book.findRelations(person);
                 break;
-            case 5: //Quit
+            case 5: //Print by relationship
+                cout << "Enter the new address book record: ";
+                book.getEntryFromInput();
+                //temp = book.getEntryFromInput();
+                //book.addEntry(temp);
+                //book.addEntry(book.getEntryFromInput());
+                break;
+            case 6: //Print by relationship
+                cout << "Enter the full name of the address book record to DELETE: ";
+                //book.getEntryFromInput();
+                break;
+            case 7: //Quit
                 break;
             default: //Any non-valid choice
                 cout << "Invalid Choice";
             }
-        } while (a != 5); //while quit is not selected
+        } while (a != 7); //while quit is not selected
 }
 
 

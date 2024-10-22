@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include <fstream>
 #include "personType.h"
 #include "extPersonType.h"
@@ -98,10 +99,69 @@ public:
 
 	}
 
+	void getEntryFromInput()
+	{
+		//string a;
+		string line;
+		string fullName;
+		string bDate;
+		string address;
+		string city;
+		string state;
+		string zip;
+		string phone;
+		string relationship;
+		string delimiter;
+		string month;
+		string day;
+		string year;
+		//cin.clear();
+		cout << "Enter the first name: ";
+		string fname;
+
+		cin >> fname;
+		getline(cin, fname);
+		//cin.clear();
+		cout << "Enter the last name: ";
+		string lname;
+		cin >> lname;
+		getline(cin, lname);
+		
+		cout << "Enter the birth month: ";
+		//cin >> month;
+		getline(cin, month);
+		cout << "Enter the day of birth: ";
+		//cin >> day;
+		getline(cin, day);
+		cout << "Enter the year of birth: ";
+		//cin >> year;
+		getline(cin, year);
+		cout << "Enter the street address: ";
+		//cin >> address;
+		getline(cin, address);
+		cout << "Enter the city: ";
+		//cin >> city;
+		getline(cin, city);
+		cout << "Enter the state: ";
+		//cin >> state;
+		getline(cin, state);
+		cout << "Enter the zip: ";
+		//cin >> zip;
+		getline(cin, zip);
+		cout << "Enter the phone: ";
+		//cin >> phone;
+		getline(cin, phone);
+		cout << "Enter the relationship: ";
+		//cin >> relationship;
+		getline(cin, relationship);
+		extPersonType record(fname, lname, stoi(month), stoi(day), stoi(year), address, city, state, stoi(zip), phone, relationship);
+		addEntry(record);
+		//return record;
+	}
 
 	void addEntry(extPersonType person) //adds an entry to the address bool
 	{
-		cout << person.getLastName() << endl;
+		//cout << person.getLastName() << endl;
 		this->insert(person);
 		cout << "In addEntry (extPersonType person), in adressBookType.h, line 101"
 			<< endl;
