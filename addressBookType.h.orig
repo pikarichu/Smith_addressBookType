@@ -15,6 +15,8 @@ using namespace std;
 class addressBookType: public orderedLinkedList<extPersonType>
 {
 public:
+	//addressBookType* myAddressBook;
+
 
 	void initEntry(string addressList) //creates the address book
 	{
@@ -37,6 +39,8 @@ public:
 		string month;
 		string day;
 		string year;
+
+
 
 		ifstream addressBookFile(addressList); //reads in the file
 
@@ -97,7 +101,7 @@ public:
 
 	void getEntryFromInput()
 	{
-		string a;
+		//string a;
 		string line;
 		string fullName;
 		string bDate;
@@ -111,63 +115,74 @@ public:
 		string month;
 		string day;
 		string year;
+		//cin.clear();
 		cout << "Enter the first name: ";
-		string newfname;
-		cin >> newfname;
+		string fname;
 
+		cin >> fname;
+		getline(cin, fname);
+		//cin.clear();
 		cout << "Enter the last name: ";
-		string newlname;
-		cin >> newlname;
+		string lname;
+		cin >> lname;
+		getline(cin, lname);
+		
 		cout << "Enter the birth month: ";
-		cin >> month;
+		//cin >> month;
+		getline(cin, month);
 		cout << "Enter the day of birth: ";
-		cin >> day;
+		//cin >> day;
+		getline(cin, day);
 		cout << "Enter the year of birth: ";
-		cin >> year;
+		//cin >> year;
+		getline(cin, year);
 		cout << "Enter the street address: ";
-		cin.ignore();
+		//cin >> address;
 		getline(cin, address);
 		cout << "Enter the city: ";
+		//cin >> city;
 		getline(cin, city);
 		cout << "Enter the state: ";
+		//cin >> state;
 		getline(cin, state);
 		cout << "Enter the zip: ";
+		//cin >> zip;
 		getline(cin, zip);
 		cout << "Enter the phone: ";
+		//cin >> phone;
 		getline(cin, phone);
 		cout << "Enter the relationship: ";
+		//cin >> relationship;
 		getline(cin, relationship);
-		extPersonType record(newfname, newlname, stoi(month), stoi(day), stoi(year), address, city, state, stoi(zip), phone, relationship);
+		extPersonType record(fname, lname, stoi(month), stoi(day), stoi(year), address, city, state, stoi(zip), phone, relationship);
 		addEntry(record);
+		//return record;
 	}
 
 	void addEntry(extPersonType person) //adds an entry to the address bool
 	{
+		//cout << person.getLastName() << endl;
 		this->insert(person);
 		cout << "In addEntry (extPersonType person), in adressBookType.h, line 101"
 			<< endl;
+
 	}
-	void findPerson(string newlname, string newfname) //finds an entry by last name
+	void findPerson(string lName) //finds an entry by last name
 	{
-		string otherKey = newlname + " " + newfname;
 		bool found = false;
 		nodeType<extPersonType>* current; //pointer to traverse the list
 
 		current = this->first;  //start the search at the first node
-		
+		//cout << current->info.getKey() << endl;
 		while (current != nullptr && !found)
-		{
-			cout << current->info.getLastName() + " " + current->info.getFirstName() << endl;
-			if (otherKey == current->info.getKey())
+			if (current->info.getLastName() == lName)
+
 			{
 				found = true;
 				current->info.print();
 			}
 			else
-			{
 				current = current->link;
-			}
-		}
 
 	}
 	void findBirthdays(int bMonth) //finds an entry by birth month
@@ -209,8 +224,10 @@ public:
 	void print() //prints out the address book
 	{
 		nodeType<extPersonType>* current; //pointer to traverse the list
+		//cout << first->info.getFirstName() << endl;
 		current = first;    //set current so that it points to 
 		//the first node
+		//current = myAddressBook.begin();
 		while (current != nullptr) //while more data to print
 		{
 			current->info.print();
@@ -218,56 +235,44 @@ public:
 		}
 		cout << endl;
 	}
-
-	void writeToFile()
+	/*void sortEntries() //sorts the entries by last name 
 	{
-		ofstream addressFile("addressBookData.txt");
+		int current = 1;
+		int index = 0;
+		bool placeFound;
+		extPersonType temp;
+		while (current < length)
 
-		string line;
-		nodeType<extPersonType>* current; //pointer to traverse the list
-		current = first;    //set current so that it points to 
-		//the first node
-		while (current != nullptr) //while more data to print
 		{
-			if(addressFile.is_open())
+			index = current;
+			placeFound = false;
+			while (index > 0 && !placeFound)
 			{
-				line = current->info.getFirstName() + " " + current->info.getLastName();
-				addressFile << line << endl;
-				line = (current->info.getBirthday());
-				addressFile << line << endl;
-				line = (current->info.getAddress());
-				addressFile << line << endl;
-				line = (current->info.getPhoneNumber());
-				addressFile << line << endl;
-				line = (current->info.getRelationship());
-				addressFile << line << endl;
-
-				current = current->link;
+				if (addressList[index].getLastName() < addressList[index - 1].getLastName())
+				{
+					temp = addressList[index];
+					addressList[index] = addressList[index - 1];
+					addressList[index - 1] = temp;
+					index = index - 1;
+				}
+				else
+				{
+					placeFound = true;
+				}
 			}
+			current = current + 1;
 		}
-		cout << endl;
-	}
-	void deleteEntry(string newlname, string newfname) //finds an entry by last name
-	{
-		string otherKey = newlname + " " + newfname;
-		bool found = false;
-		nodeType<extPersonType>* current; //pointer to traverse the list
+		
+	}*/
 
-		current = this->first;  //start the search at the first node
+	//addressBookType() //default constructor
+	//{
+	//}
 
-		while (current != nullptr && !found)
-		{
-			cout << current->info.getLastName() + " " + current->info.getFirstName() << endl;
-			if (otherKey == current->info.getKey())
-			{
-				found = true;
-				this->deleteNode(current->info);
-			}
-			else
-			{
-				current = current->link;
-			}
-		}
-	}
+private:
+
+/*	extPersonType addressList[500];
+	int length;
+	int maxLength; */
 };
 

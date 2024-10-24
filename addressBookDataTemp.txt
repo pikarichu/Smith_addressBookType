@@ -14,6 +14,22 @@ NY
 10000
 212-782-8000
 Friend
+Goof Goofy
+2 6 1965
+Disney Street
+Los Angles
+CA
+91340
+215-782-9000
+Family
+Joe Jones
+1 23 2003
+145 Main St
+Town
+TN
+12345
+987-654-3210
+Friend
 Shelly Malik
 12 8 2000
 Lincoln Drive

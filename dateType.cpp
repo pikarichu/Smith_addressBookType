@@ -76,6 +76,7 @@ int dateType::getMonth() //returns month
 
 int dateType::getYear() //returns year
 {
+	cout << year << endl;
 	return year;
 }
 

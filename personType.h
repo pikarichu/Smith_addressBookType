@@ -2,7 +2,6 @@
 #include "addressType.h"
 #include "dateType.h"
 #include "personType.h"
-//#include "extPersonType.h"
 
 class personType
 {

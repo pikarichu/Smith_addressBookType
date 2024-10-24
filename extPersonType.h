@@ -2,14 +2,19 @@
 #include "addressType.h"
 #include "dateType.h"
 #include "personType.h"
+#include <string>
 
 class extPersonType : public personType
 {
+
 public:
-	
+
+	string key;
+
+
 	void setKey()
 	{
-		key = lastName + " " + firstName;
+		key = getLastName() + " " + getFirstName();
 	}
 	string getKey()
 	{
@@ -41,6 +46,23 @@ public:
 	int getBirthMonth() //returns the birth month
 	{
 		return birthdate.getMonth();
+	}
+	string getBirthday()
+	{
+		int bday = birthdate.getDay();
+		int bmonth = birthdate.getMonth();
+		int byear = birthdate.getYear();
+		string temporay = to_string(bmonth) + 
+			" " + to_string(bday) + 
+			" " + to_string(byear);
+		return temporay;
+	}
+	string getAddress()
+	{
+		string temp = address.getAddress() + "\n" +
+			address.getCity() + "\n" + address.getState() + "\n" +
+			to_string(address.getZipcode());
+		return temp;
 	}
 	void print() //prints out the person's info
 	{
@@ -79,38 +101,37 @@ public:
 		setRelationship(relationship);
 		setKey();
 	}
-	bool operator==(const extPersonType& other) const 
+	bool operator==(const extPersonType& other) const
 	{
 		//string otherKey = other.lastName + " " + other.firstName;
 		return (key == other.key);
 	}
 
-	bool operator!=(const extPersonType& other) const 
+	bool operator!=(const extPersonType& other) const
 	{
 
 		return !(key == other.key);
 	}
 
 	bool operator>=(const extPersonType& other) const {
-		if (key > other.key) {
+		if (key > other.key) 
+		{
 			return true;
 		}
-		else if (key == other.key) {
+		else if (key == other.key) 
+		{
 			return key >= other.key;
 		}
-		else {
+		else 
+		{
 			return false;
 		}
 	}
-
 
 private:
 	addressType address;
 	dateType birthdate;
 	string phoneNumber;
 	string relationship;
-	string firstName;
-	string lastName;
-	string key;
 };
 
